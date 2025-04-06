@@ -4,6 +4,8 @@ import '../models/quiz_provider.dart';
 import '../utils/web_responsive_helper.dart';
 import '../widgets/answer_feedback.dart';
 import 'result_screen.dart';
+import '../models/question.dart';
+import '../models/quiz_questions.dart';
 
 class QuestionScreen extends StatefulWidget {
   const QuestionScreen({Key? key}) : super(key: key);
@@ -12,13 +14,48 @@ class QuestionScreen extends StatefulWidget {
   State<QuestionScreen> createState() => _QuestionScreenState();
 }
 
-class _QuestionScreenState extends State<QuestionScreen> {
+class _QuestionScreenState extends State<QuestionScreen> with SingleTickerProviderStateMixin {
   bool _showFeedback = false;
   bool _isCorrect = false;
   int _selectedIndex = -1;
+  late AnimationController _animationController;
+  late Animation<double> _fadeAnimation;
 
+  @override
+  void initState() {
+    super.initState();
+    _loadQuestionsFromJson();
+    _animationController = AnimationController(
+      duration: const Duration(milliseconds: 300),
+      vsync: this,
+    );
+    _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(_animationController);
+    _animationController.forward();
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+  Future<void> _loadQuestionsFromJson() async {
+    try {
+      final questions = await QuizQuestions.loadQuestions();
+      if (mounted) {
+        final quizProvider = Provider.of<QuizProvider>(context, listen: false);
+        quizProvider.setQuestions(questions);
+      }
+    } catch (e) {
+      debugPrint('Error loading questions: $e');
+    }
+  }
   void _checkAnswer(QuizProvider quizProvider, int index) {
-    final isCorrect = index == quizProvider.currentQuestion.correctAnswerIndex;
+    if (_showFeedback) return; // Prevent multiple selections
+    
+    final currentQuestion = quizProvider.currentQuestion;
+    if (currentQuestion == null) return;
+    
+    final isCorrect = index == currentQuestion.correctAnswerIndex;
     
     setState(() {
       _showFeedback = true;
@@ -26,29 +63,34 @@ class _QuestionScreenState extends State<QuestionScreen> {
       _selectedIndex = index;
     });
     
-    // Play sound effect based on answer correctness
-    // This would be implemented with audio packages in a full implementation
+    // Could add sound effect here using an audio package
   }
 
   void _nextQuestion(QuizProvider quizProvider) {
-    // Store the selected index before resetting it
-    final selectedIndex = _selectedIndex;
-    
-    setState(() {
-      _showFeedback = false;
-      _selectedIndex = -1;
+    // Animate out current question
+    _animationController.reverse().then((_) {
+      // Store the selected index before resetting state
+      final selectedIndex = _selectedIndex;
+      
+      setState(() {
+        _showFeedback = false;
+        _selectedIndex = -1;
+      });
+      
+      // Process the answer in the provider
+      quizProvider.answerQuestion(selectedIndex);
+      
+      // Animate in next question
+      _animationController.forward();
     });
-    
-    // Use the stored index for scoring
-    quizProvider.answerQuestion(selectedIndex);
   }
 
   @override
   Widget build(BuildContext context) {
     return Consumer<QuizProvider>(
       builder: (context, quizProvider, child) {
+        // Handle quiz completion
         if (quizProvider.quizCompleted) {
-          // Navigate to results screen when quiz is completed
           WidgetsBinding.instance.addPostFrameCallback((_) {
             Navigator.pushReplacement(
               context,
@@ -59,6 +101,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
           });
         }
 
+        // Show loading indicator while questions are being loaded
         if (quizProvider.questions.isEmpty) {
           return const Scaffold(
             body: Center(
@@ -68,6 +111,18 @@ class _QuestionScreenState extends State<QuestionScreen> {
         }
 
         final currentQuestion = quizProvider.currentQuestion;
+        if (currentQuestion == null) {
+          // Handle unexpected null case
+          return Scaffold(
+            body: Center(
+              child: Text(
+                'خطأ في تحميل السؤال',
+                style: TextStyle(fontSize: 20),
+                textDirection: TextDirection.rtl,
+              ),
+            ),
+          );
+        }
 
         return Scaffold(
           body: Container(
@@ -90,121 +145,148 @@ class _QuestionScreenState extends State<QuestionScreen> {
                     constraints: BoxConstraints(
                       maxWidth: WebResponsiveHelper.getMaxContentWidth(context),
                     ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        // Progress indicator
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 20.0),
-                          child: LinearProgressIndicator(
-                            value: (quizProvider.currentQuestionIndex + 1) / quizProvider.questions.length,
-                            backgroundColor: Colors.white.withOpacity(0.3),
-                            valueColor: AlwaysStoppedAnimation<Color>(Colors.amber),
-                            minHeight: WebResponsiveHelper.isWebPlatform() ? 15 : 10,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                        
-                        // Question counter and score
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
-                              decoration: BoxDecoration(
-                                color: Colors.amber,
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              child: Text(
-                                'النقاط: ${quizProvider.score}',
-                                style: TextStyle(
-                                  fontSize: WebResponsiveHelper.isWebPlatform() ? 18 : 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black87,
+                    child: FadeTransition(
+                      opacity: _fadeAnimation,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          // App bar with back button
+                          Padding(
+                            padding: const EdgeInsets.only(top: 4.0, bottom: 8.0),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                IconButton(
+                                  icon: const Icon(Icons.arrow_back, color: Colors.white),
+                                  onPressed: () {quizProvider.resetQuiz(); Navigator.of(context).pop();},
                                 ),
-                                textDirection: TextDirection.rtl,
-                              ),
+                                const Spacer(),
+                                IconButton(
+                                  icon: const Icon(Icons.help, color: Colors.white),
+                                  onPressed: () {quizProvider.resetQuiz(); Navigator.of(context).pop();},
+                                ),
+                                // Optional: Add settings or help button here
+                              ],
                             ),
-                            Text(
-                              'سؤال ${quizProvider.currentQuestionIndex + 1} من ${quizProvider.questions.length}',
-                              style: TextStyle(
-                                fontSize: WebResponsiveHelper.isWebPlatform() ? 18 : 16,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              textDirection: TextDirection.rtl,
+                          ),
+                          
+                          // Progress indicator
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 12.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                LinearProgressIndicator(
+                                  value: quizProvider.progressPercentage,
+                                  backgroundColor: Colors.white.withOpacity(0.3),
+                                  valueColor: const AlwaysStoppedAnimation<Color>(Colors.amber),
+                                  minHeight: WebResponsiveHelper.isWebPlatform() ? 12 : 8,
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                const SizedBox(height: 8),
+                                Directionality(
+                                  textDirection: TextDirection.rtl,
+                                  child: Text(
+                                    'سؤال ${quizProvider.currentQuestionIndex + 1} من ${quizProvider.questions.length}',
+                                    style: const TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
-                        
-                        const SizedBox(height: 30),
-                        
-                        // Question text
-                        Container(
-                          padding: const EdgeInsets.all(20),
-                          decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.9),
-                            borderRadius: BorderRadius.circular(20),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(0.1),
-                                blurRadius: 10,
-                                spreadRadius: 2,
+                          ),
+                          
+                          // Score display
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Container(
+                                padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+                                decoration: BoxDecoration(
+                                  color: Colors.amber,
+                                  borderRadius: BorderRadius.circular(20),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black.withOpacity(0.1),
+                                      blurRadius: 4,
+                                      offset: const Offset(0, 2),
+                                    ),
+                                  ],
+                                ),
+                                child: Directionality(
+                                  textDirection: TextDirection.rtl,
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      const Icon(Icons.star, color: Colors.black87, size: 20),
+                                      const SizedBox(width: 4),
+                                      Text(
+                                        'النقاط: ${quizProvider.score}',
+                                        style: const TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black87,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
                               ),
                             ],
                           ),
-                          child: Text(
-                            currentQuestion.questionText,
-                            style: TextStyle(
-                              fontSize: WebResponsiveHelper.isWebPlatform() ? 26 : 22,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.blue.shade900,
-                            ),
-                            textAlign: TextAlign.center,
-                            textDirection: TextDirection.rtl,
-                          ),
-                        ),
-                        
-                        const SizedBox(height: 40),
-                        
-                        // Show feedback or answer options
-                        if (_showFeedback)
-                          AnswerFeedback(
-                            isCorrect: _isCorrect,
-                            question: currentQuestion,
-                            onNextQuestion: () => _nextQuestion(quizProvider),
-                          )
-                        else
-                          // Answer options
-                          ...List.generate(
-                            currentQuestion.options.length,
-                            (index) => Padding(
-                              padding: const EdgeInsets.only(bottom: 15.0),
-                              child: ElevatedButton(
-                                onPressed: () => _checkAnswer(quizProvider, index),
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.white,
-                                  foregroundColor: Colors.blue.shade800,
-                                  padding: EdgeInsets.symmetric(
-                                    vertical: WebResponsiveHelper.isWebPlatform() ? 20 : 15
+                          
+                          const SizedBox(height: 20),
+                          
+                          // Question text
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 12.0),
+                            child: Container(
+                              padding: const EdgeInsets.all(20),
+                              decoration: BoxDecoration(
+                                color: Colors.white.withOpacity(0.9),
+                                borderRadius: BorderRadius.circular(20),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withOpacity(0.1),
+                                    blurRadius: 10,
+                                    spreadRadius: 2,
                                   ),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(15),
-                                  ),
-                                  elevation: 5,
-                                ),
+                                ],
+                              ),
+                              child: Directionality(
+                                textDirection: TextDirection.rtl,
                                 child: Text(
-                                  currentQuestion.options[index],
+                                  currentQuestion.questionText,
                                   style: TextStyle(
-                                    fontSize: WebResponsiveHelper.isWebPlatform() ? 22 : 18,
+                                    fontSize: WebResponsiveHelper.isWebPlatform() ? 24 : 20,
                                     fontWeight: FontWeight.bold,
+                                    color: Colors.blue.shade900,
+                                    height: 1.4,
                                   ),
-                                  textDirection: TextDirection.rtl,
+                                  textAlign: TextAlign.center,
                                 ),
                               ),
                             ),
                           ),
-                      ],
+                          
+                          const SizedBox(height: 20),
+                          
+                          // Feedback or answer options
+                          Expanded(
+                            child: _showFeedback
+                                ? AnswerFeedback(
+                                    isCorrect: _isCorrect,
+                                    question: currentQuestion,
+                                    selectedAnswerIndex: _selectedIndex,
+                                    onNextQuestion: () => _nextQuestion(quizProvider),
+                                    isLastQuestion: quizProvider.isLastQuestion(),
+                                  )
+                                : _buildAnswerOptions(currentQuestion, quizProvider),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -213,6 +295,69 @@ class _QuestionScreenState extends State<QuestionScreen> {
           ),
         );
       },
+    );
+  }
+
+  Widget _buildAnswerOptions(Question question, QuizProvider quizProvider) {
+    return ListView.builder(
+      itemCount: question.options.length,
+      shrinkWrap: true,
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      itemBuilder: (context, index) {
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 12.0),
+          child: _buildAnswerButton(question.options[index], index, quizProvider),
+        );
+      },
+    );
+  }
+
+  Widget _buildAnswerButton(String optionText, int index, QuizProvider quizProvider) {
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: () => _checkAnswer(quizProvider, index),
+        borderRadius: BorderRadius.circular(15),
+        child: Container(
+          padding: EdgeInsets.symmetric(
+            vertical: WebResponsiveHelper.isWebPlatform() ? 18 : 14,
+            horizontal: 16,
+          ),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(15),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.08),
+                blurRadius: 5,
+                offset: const Offset(0, 2),
+              ),
+            ],
+          ),
+          child: Row(
+            children: [
+              Expanded(
+                child: Directionality(
+                  textDirection: TextDirection.rtl,
+                  child: Text(
+                    optionText,
+                    style: TextStyle(
+                      fontSize: WebResponsiveHelper.isWebPlatform() ? 20 : 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blue.shade800,
+                    ),
+                  ),
+                ),
+              ),
+              Icon(
+                Icons.circle_outlined,
+                color: Colors.blue.shade300,
+                size: 24,
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

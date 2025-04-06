@@ -45,20 +45,10 @@ class _QuizAppState extends State<QuizApp> {
   void initState() {
     super.initState();
     // Initialize quiz questions from JSON file
-    _loadQuestionsFromJson();
+    
   }
   
-  Future<void> _loadQuestionsFromJson() async {
-    try {
-      final questions = await QuizQuestions.loadQuestions();
-      if (mounted) {
-        final quizProvider = Provider.of<QuizProvider>(context, listen: false);
-        quizProvider.setQuestions(questions);
-      }
-    } catch (e) {
-      debugPrint('Error loading questions: $e');
-    }
-  }
+  
 
   @override
   Widget build(BuildContext context) {
