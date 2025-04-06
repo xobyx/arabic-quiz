@@ -1,0 +1,530 @@
+{
+  "questions": [
+    {
+      "questionText": "ما هي عاصمة مصر؟",
+      "options": ["القاهرة", "الإسكندرية", "الرياض"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هو أطول نهر في العالم؟",
+      "options": ["نهر الأمازون", "نهر النيل", "نهر المسيسيبي"],
+      "correctAnswerIndex": 1
+    },
+    {
+      "questionText": "كم عدد أيام الأسبوع؟",
+      "options": ["خمسة أيام", "ستة أيام", "سبعة أيام"],
+      "correctAnswerIndex": 2
+    },
+    {
+      "questionText": "ما هي أكبر قارة في العالم؟",
+      "options": ["آسيا", "أفريقيا", "أوروبا"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هو العنصر الأكثر وفرة في الغلاف الجوي؟",
+      "options": ["الأكسجين", "النيتروجين", "ثاني أكسيد الكربون"],
+      "correctAnswerIndex": 1
+    },
+    {
+      "questionText": "ما هي اللغة الرسمية في المغرب؟",
+      "options": ["العربية", "الفرنسية", "الأمازيغية"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هو أكبر محيط في العالم؟",
+      "options": ["المحيط الأطلسي", "المحيط الهندي", "المحيط الهادئ"],
+      "correctAnswerIndex": 2
+    },
+    {
+      "questionText": "ما هي عملة المملكة العربية السعودية؟",
+      "options": ["الريال", "الدينار", "الدرهم"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هو أعلى جبل في العالم؟",
+      "options": ["جبل كليمنجارو", "جبل إفرست", "جبل الألب"],
+      "correctAnswerIndex": 1
+    },
+    {
+      "questionText": "كم عدد لاعبي كرة القدم في الفريق الواحد؟",
+      "options": ["١٠ لاعبين", "١١ لاعب", "١٢ لاعب"],
+      "correctAnswerIndex": 1
+    },
+    {
+      "questionText": "ما هي أصغر دولة عربية من حيث المساحة؟",
+      "options": ["البحرين", "قطر", "لبنان"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هو الكوكب الأقرب إلى الشمس؟",
+      "options": ["الزهرة", "عطارد", "المريخ"],
+      "correctAnswerIndex": 1
+    },
+    {
+      "questionText": "ما هي عاصمة الأردن؟",
+      "options": ["عمّان", "بغداد", "دمشق"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هو الحيوان الذي يعتبر رمزاً للسلام؟",
+      "options": ["النسر", "الحمامة", "الأسد"],
+      "correctAnswerIndex": 1
+    },
+    {
+      "questionText": "كم عدد أضلاع المثلث؟",
+      "options": ["ثلاثة أضلاع", "أربعة أضلاع", "خمسة أضلاع"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هو أكبر كوكب في المجموعة الشمسية؟",
+      "options": ["المشتري", "زحل", "الأرض"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هي العاصمة الإدارية للمملكة المغربية؟",
+      "options": ["الرباط", "الدار البيضاء", "فاس"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "من هو مخترع المصباح الكهربائي؟",
+      "options": ["توماس إديسون", "ألبرت أينشتاين", "غراهام بيل"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "كم عدد الدول العربية؟",
+      "options": ["20 دولة", "22 دولة", "25 دولة"],
+      "correctAnswerIndex": 1
+    },
+    {
+      "questionText": "ما هي أقدم جامعة في العالم العربي؟",
+      "options": ["جامعة القرويين", "الأزهر الشريف", "جامعة القاهرة"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هو المعدن الذي يوجد في الحالة السائلة في درجة حرارة الغرفة؟",
+      "options": ["الذهب", "الزئبق", "الفضة"],
+      "correctAnswerIndex": 1
+    },
+    {
+      "questionText": "من هو مؤلف كتاب 'ألف ليلة وليلة'؟",
+      "options": ["مؤلف مجهول", "الجاحظ", "ابن المقفع"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هي أكبر صحراء في العالم؟",
+      "options": ["الصحراء الكبرى", "صحراء الربع الخالي", "صحراء غوبي"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "من هو مؤسس دولة الإمارات العربية المتحدة؟",
+      "options": ["الشيخ زايد بن سلطان آل نهيان", "الشيخ راشد بن سعيد آل مكتوم", "الشيخ خليفة بن زايد آل نهيان"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هي العملة المستخدمة في اليابان؟",
+      "options": ["الين", "الوون", "اليوان"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "كم عدد الأسنان الدائمة عند الإنسان البالغ؟",
+      "options": ["28 سناً", "32 سناً", "36 سناً"],
+      "correctAnswerIndex": 1
+    },
+    {
+      "questionText": "ما هي أطول سورة في القرآن الكريم؟",
+      "options": ["سورة البقرة", "سورة آل عمران", "سورة النساء"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هو الكائن الحي الذي ينام بعين واحدة مفتوحة؟",
+      "options": ["الدلفين", "القط", "النسر"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هو أسرع حيوان بري في العالم؟",
+      "options": ["الفهد", "النمر", "الأسد"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هي عاصمة لبنان؟",
+      "options": ["بيروت", "دمشق", "عمان"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هو الهرم الأكبر في مصر؟",
+      "options": ["هرم خوفو", "هرم خفرع", "هرم منقرع"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "في أي سنة تأسست منظمة الأمم المتحدة؟",
+      "options": ["1945", "1950", "1955"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هي الدولة العربية التي تقع في قارتين؟",
+      "options": ["مصر", "المغرب", "اليمن"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هو العنصر الأكثر وفرة في قشرة الأرض؟",
+      "options": ["الحديد", "الأكسجين", "السيليكون"],
+      "correctAnswerIndex": 1
+    },
+    {
+      "questionText": "ما هي أقصر سورة في القرآن الكريم؟",
+      "options": ["سورة الكوثر", "سورة العصر", "سورة الإخلاص"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "من هو مخترع الهاتف؟",
+      "options": ["ألكسندر غراهام بيل", "توماس إديسون", "نيكولا تسلا"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هي عاصمة السويد؟",
+      "options": ["ستوكهولم", "أوسلو", "كوبنهاغن"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هو المعدن الأكثر انتشاراً في جسم الإنسان؟",
+      "options": ["الحديد", "الكالسيوم", "الزنك"],
+      "correctAnswerIndex": 1
+    },
+    {
+      "questionText": "متى وقعت الحرب العالمية الثانية؟",
+      "options": ["1939-1945", "1929-1935", "1945-1950"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "من هو الخليفة الراشدي الأول؟",
+      "options": ["أبو بكر الصديق", "عمر بن الخطاب", "عثمان بن عفان"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هي عاصمة الجزائر؟",
+      "options": ["الجزائر", "تونس", "الرباط"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "من هو مؤلف كتاب 'مقدمة ابن خلدون'؟",
+      "options": ["ابن خلدون", "ابن سينا", "الفارابي"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هو أكبر عضو في جسم الإنسان؟",
+      "options": ["الكبد", "الدماغ", "الجلد"],
+      "correctAnswerIndex": 2
+    },
+    {
+      "questionText": "ما هي أطول سلسلة جبال في العالم؟",
+      "options": ["جبال الهيمالايا", "جبال الأنديز", "جبال الألب"],
+      "correctAnswerIndex": 1
+    },
+    {
+      "questionText": "ما هي أكبر بحيرة في العالم؟",
+      "options": ["بحيرة فيكتوريا", "بحر قزوين", "البحيرة العظمى"],
+      "correctAnswerIndex": 1
+    },
+    {
+      "questionText": "ما هي اللغة الرسمية في البرازيل؟",
+      "options": ["البرتغالية", "الإسبانية", "الإنجليزية"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هو الرقم الذري للأكسجين؟",
+      "options": ["6", "8", "10"],
+      "correctAnswerIndex": 1
+    },
+    {
+      "questionText": "من مكتشف الدورة الدموية الصغرى؟",
+      "options": ["ابن النفيس", "ابن سينا", "الرازي"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هو الحيوان الذي يمتلك أكبر قلب؟",
+      "options": ["الحوت الأزرق", "الفيل", "الزرافة"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "كم عدد البحار التي تحيط بشبه الجزيرة العربية؟",
+      "options": ["3 بحار", "4 بحار", "5 بحار"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هي عاصمة أستراليا؟",
+      "options": ["كانبرا", "سيدني", "ملبورن"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "في أي عام تأسست المملكة العربية السعودية الحديثة؟",
+      "options": ["1932", "1927", "1940"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هي أكبر دولة عربية من حيث المساحة؟",
+      "options": ["الجزائر", "السعودية", "السودان"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هو العنصر الذي يرمز له بالرمز 'Fe'؟",
+      "options": ["الفضة", "الحديد", "الفلور"],
+      "correctAnswerIndex": 1
+    },
+    {
+      "questionText": "من هو مؤلف كتاب 'كليلة ودمنة'؟",
+      "options": ["ابن المقفع", "الجاحظ", "ابن طفيل"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "كم عدد أرجل العنكبوت؟",
+      "options": ["6 أرجل", "8 أرجل", "10 أرجل"],
+      "correctAnswerIndex": 1
+    },
+    {
+      "questionText": "ما هي عاصمة تونس؟",
+      "options": ["تونس", "صفاقس", "سوسة"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هو أطول حائط في العالم؟",
+      "options": ["سور الصين العظيم", "جدار برلين", "الحاجز الأمني الإسرائيلي"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "من هو مخترع الإنترنت؟",
+      "options": ["تيم بيرنرز لي", "بيل غيتس", "ستيف جوبز"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هو اسم أكبر متحف في العالم؟",
+      "options": ["متحف اللوفر", "المتحف البريطاني", "متحف الإرميتاج"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هي عاصمة فرنسا؟",
+      "options": ["باريس", "لندن", "روما"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هي القارة التي تقع فيها دولة كينيا؟",
+      "options": ["أفريقيا", "آسيا", "أوروبا"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هو الكوكب المعروف باسم 'الكوكب الأحمر'؟",
+      "options": ["المريخ", "المشتري", "عطارد"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "من هو مؤلف 'القانون في الطب'؟",
+      "options": ["ابن سينا", "الرازي", "ابن رشد"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هي أكبر دولة في العالم من حيث المساحة؟",
+      "options": ["روسيا", "كندا", "الصين"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هو اسم الخلية العصبية في جسم الإنسان؟",
+      "options": ["النيورون", "الخلية الجذعية", "كرية الدم الحمراء"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "من هو أول رائد فضاء يدور حول الأرض؟",
+      "options": ["يوري غاغارين", "نيل أرمسترونغ", "باز ألدرين"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هي عاصمة اليابان؟",
+      "options": ["طوكيو", "بكين", "سيول"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هو الغاز الأكثر وفرة في الشمس؟",
+      "options": ["الهيدروجين", "الأكسجين", "النيتروجين"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "من هو مؤسس الفيسبوك؟",
+      "options": ["مارك زوكربيرغ", "بيل غيتس", "ستيف جوبز"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هي الدولة التي يمر بها خط الاستواء وخط غرينتش؟",
+      "options": ["غانا", "البرازيل", "إندونيسيا"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هو الحيوان الذي يعتبر رمزاً للولايات المتحدة الأمريكية؟",
+      "options": ["النسر", "الأسد", "الدب"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هي أكبر دولة إسلامية من حيث عدد السكان؟",
+      "options": ["إندونيسيا", "باكستان", "مصر"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هو جزء النبات الذي يقوم بعملية البناء الضوئي؟",
+      "options": ["الأوراق", "الجذور", "الساق"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هي عاصمة نيجيريا؟",
+      "options": ["أبوجا", "لاغوس", "القاهرة"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "من هو الفائز بكأس العالم لكرة القدم عام 2022؟",
+      "options": ["الأرجنتين", "فرنسا", "البرازيل"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هو أصغر كوكب في المجموعة الشمسية؟",
+      "options": ["عطارد", "المريخ", "بلوتو"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هي أكبر دولة أفريقية من حيث عدد السكان؟",
+      "options": ["نيجيريا", "مصر", "إثيوبيا"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هو اسم أول مسجد بني في الإسلام؟",
+      "options": ["مسجد قباء", "المسجد النبوي", "المسجد الحرام"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هي العاصمة الاقتصادية للمملكة العربية السعودية؟",
+      "options": ["جدة", "الرياض", "الدمام"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هو تاريخ اليوم الوطني للمملكة العربية السعودية؟",
+      "options": ["23 سبتمبر", "3 مارس", "18 ديسمبر"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هو الحيوان الذي ينام واقفاً؟",
+      "options": ["الحصان", "الفيل", "الزرافة"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هي العاصمة القديمة لليابان؟",
+      "options": ["كيوتو", "أوساكا", "طوكيو"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "من هو مؤسس علم الاجتماع؟",
+      "options": ["ابن خلدون", "أوغست كونت", "كارل ماركس"],
+      "correctAnswerIndex": 1
+    },
+    {
+      "questionText": "ما هو العضو المسؤول عن تنقية الدم في جسم الإنسان؟",
+      "options": ["الكلى", "الكبد", "الطحال"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "من هو الصحابي الملقب بـ 'سيف الله المسلول'؟",
+      "options": ["خالد بن الوليد", "سعد بن أبي وقاص", "عمرو بن العاص"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هي أكبر دولة عربية من حيث عدد السكان؟",
+      "options": ["مصر", "السعودية", "الجزائر"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هو الجبل الذي استقرت عليه سفينة نوح بعد الطوفان؟",
+      "options": ["جبل الجودي", "جبل عرفات", "جبل سيناء"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هو البحر الذي لا يحتوي على كائنات حية؟",
+      "options": ["البحر الميت", "البحر الأحمر", "البحر الأسود"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هي عاصمة كندا؟",
+      "options": ["أوتاوا", "تورونتو", "مونتريال"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "كم عدد كواكب المجموعة الشمسية؟",
+      "options": ["8 كواكب", "9 كواكب", "7 كواكب"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هو أطول نفق في العالم؟",
+      "options": ["نفق جوتارد الأساسي", "نفق سيكان", "نفق المانش"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "من هو مؤلف مسرحية 'هاملت'؟",
+      "options": ["وليام شكسبير", "فيكتور هوغو", "تشارلز ديكنز"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هي عاصمة الإمارات العربية المتحدة؟",
+      "options": ["أبو ظبي", "دبي", "الشارقة"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هو الحيوان الوطني لأستراليا؟",
+      "options": ["الكنغر", "الكوالا", "النسر"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "من هو مخترع الطائرة؟",
+      "options": ["الأخوان رايت", "توماس إديسون", "نيكولا تسلا"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هي العملة الرسمية في الاتحاد الأوروبي؟",
+      "options": ["اليورو", "الدولار", "الجنيه"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "من هو الفيلسوف اليوناني الذي علّم الإسكندر الأكبر؟",
+      "options": ["أرسطو", "أفلاطون", "سقراط"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هي أقدم حضارة في التاريخ؟",
+      "options": ["الحضارة السومرية", "الحضارة المصرية القديمة", "الحضارة الصينية"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "من هو العالم المسلم الذي اخترع الجبر؟",
+      "options": ["الخوارزمي", "ابن الهيثم", "ابن سينا"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هي أصغر قارة في العالم؟",
+      "options": ["أوقيانوسيا", "أوروبا", "أنتاركتيكا"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "كم عدد الأسابيع في السنة؟",
+      "options": ["52 أسبوعاً", "48 أسبوعاً", "56 أسبوعاً"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هو أكبر خليج في العالم؟",
+      "options": ["خليج المكسيك", "خليج البنغال", "الخليج العربي"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "من أول من حاز على جائزة نوبل من العرب؟",
+      "options": ["أنور السادات", "نجيب محفوظ", "ياسر عرفات"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "questionText": "ما هي أكبر شركة تكنولوجيا في العالم من حيث القيمة السوقية؟",
+      "options": ["أبل", "مايكروسوفت", "أمازون"],
+      "correctAnswerIndex": 0
+    }
+  ]
+}
+    
