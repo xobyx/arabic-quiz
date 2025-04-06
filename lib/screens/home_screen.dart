@@ -3,6 +3,7 @@ import '../models/quiz_provider.dart';
 import '../utils/web_responsive_helper.dart';
 import 'question_screen.dart';
 import 'result_screen.dart';
+import 'stage_selection_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -67,7 +68,7 @@ class HomeScreen extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const QuestionScreen(),
+                            builder: (context) => const StageSelectionScreen(),
                           ),
                         );
                       },

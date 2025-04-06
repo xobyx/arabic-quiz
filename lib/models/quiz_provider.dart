@@ -10,13 +10,17 @@ class QuizProvider extends ChangeNotifier {
   QuizConfig _config = const QuizConfig();
   
   // Getters
+  int get totalQuestions => _questions.length;
   int get currentQuestionIndex => _currentQuestionIndex;
   int get score => _score;
+  bool get isQuizComplete => _quizCompleted;
   bool get quizCompleted => _quizCompleted;
   List<Question> get questions => _questions;
   Question? get currentQuestion => 
       _questions.isNotEmpty && _currentQuestionIndex < _questions.length ? 
       _questions[_currentQuestionIndex] : null;
+
+ 
   List<int> get userAnswers => _userAnswers;
   double get progressPercentage => _questions.isEmpty ? 
       0.0 : (_currentQuestionIndex + 1) / _questions.length;
@@ -57,7 +61,9 @@ class QuizProvider extends ChangeNotifier {
     _userAnswers = List<int>.filled(_questions.length, -1);
     notifyListeners();
   }
-  
+  bool isCorrectAnswer(int selectedIndex){
+    return selectedIndex == _questions[_currentQuestionIndex].correctAnswerIndex;
+  }
   void answerQuestion(int selectedIndex) {
     if (_currentQuestionIndex >= _questions.length || _quizCompleted) {
       return;
@@ -89,7 +95,9 @@ class QuizProvider extends ChangeNotifier {
   bool isLastQuestion() {
     return _currentQuestionIndex == _questions.length - 1;
   }
-  
+  Question getCurrentQuestion() {
+    return currentQuestion!;
+  }
   void resetQuiz() {
     _currentQuestionIndex = 0;
     _score = 0;
