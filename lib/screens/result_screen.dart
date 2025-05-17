@@ -172,10 +172,10 @@ class _ResultScreenState extends State<ResultScreen> {
                               children: [
                                 // Score Animation
                                 TweenAnimationBuilder<double>(
-                                  tween: Tween<double>(begin: 0, end: percentage),
+                                  tween: Tween<double>(begin: 0, end: percentage.clamp(0.0, 1.0)),
                                   duration: const Duration(milliseconds: 1500),
                                   curve: Curves.easeOutCubic,
-                                  builder: (context, value, child) {
+                                  builder: (context, val, child) {
                                     return Column(
                                       children: [
                                         Stack(
@@ -185,7 +185,7 @@ class _ResultScreenState extends State<ResultScreen> {
                                               height: 150,
                                               width: 150,
                                               child: CircularProgressIndicator(
-                                                value: value / 100,
+                                                value: val,
                                                 strokeWidth: 12,
                                                 backgroundColor: Colors.grey.shade200,
                                                 color: _getScoreColor(percentage),
@@ -194,7 +194,7 @@ class _ResultScreenState extends State<ResultScreen> {
                                             Column(
                                               children: [
                                                 Text(
-                                                  '${value.toInt()}%',
+                                                  '${val.toInt()*100}%',
                                                   style: GoogleFonts.cairo(
                                                     fontSize: 36,
                                                     fontWeight: FontWeight.bold,
@@ -442,11 +442,11 @@ class _ResultScreenState extends State<ResultScreen> {
 
   // Helper method to get color based on score percentage
   Color _getScoreColor(double percentage) {
-    if (percentage < 50) {
+    if (percentage < 0.50) {
       return Colors.red.shade600;
-    } else if (percentage < 70) {
+    } else if (percentage < 0.70) {
       return Colors.orange.shade600;
-    } else if (percentage < 90) {
+    } else if (percentage < 0.90) {
       return Colors.green.shade600;
     } else {
       return Colors.purple.shade500;

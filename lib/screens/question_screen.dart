@@ -208,8 +208,8 @@ class _QuestionScreenState extends State<QuestionScreen> with TickerProviderStat
           color: Colors.transparent,
           child: Center(
             child: SizedBox(
-              width: 200,
-              height: 200,
+              width: 400,
+              height: 400,
               child: Lottie.asset(
                 'assets/animations/correct_answer.json',
                 controller: _feedbackAnimationController,
@@ -243,8 +243,8 @@ class _QuestionScreenState extends State<QuestionScreen> with TickerProviderStat
           color: Colors.transparent,
           child: Center(
             child: SizedBox(
-              width: 200,
-              height: 200,
+              width: 400,
+              height: 400,
               child: Lottie.asset(
                 'assets/animations/incorrect_answer.json',
                 controller: _feedbackAnimationController,
