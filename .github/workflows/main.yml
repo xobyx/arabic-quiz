@@ -1,0 +1,102 @@
+name: Flutter Build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build Flutter App
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Setup Flutter
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.27.0" # Change to your desired version
+          channel: stable
+
+      # Install dependencies
+      - name: Install dependencies
+        run: flutter pub get
+
+      # Run tests (optional but recommended)
+      #- name: Run tests
+        #run: flutter test
+      - name: Disable aapt2FromMavenOverride
+        run: sed -i 's/^android.aapt2FromMavenOverride=.*/android.aapt2FromMavenOverride=/' android/gradle.properties
+
+      - name: Decode Keystore
+        run: |
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > android/app/keystore.jks
+          
+      - name: Create key.properties
+        run: |
+          echo "storePassword=${{ secrets.KEYSTORE_PASSWORD }}" > android/key.properties
+          echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> android/key.properties
+          echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> android/key.properties
+          echo "storeFile=keystore.jks" >> android/key.properties
+      # Build Android APK
+      - name: Build Android APK
+        run: flutter build apk --release
+
+      # Build Android App Bundle (AAB)
+      #- name: Build Android AAB
+        #run: flutter build appbundle --release
+
+      
+      # Build Web
+      - name: Build Web
+        run: flutter build web
+
+      # Upload APK artifact
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
+
+      # Upload AAB artifact
+      #- name: Upload AAB
+        #uses: actions/upload-artifact@v4
+        #with:
+          #name: android-aab
+          #path: build/app/outputs/bundle/release/app-release.aab
+
+      
+
+      # Upload Web build artifact
+      - name: Upload Web Build
+        uses: actions/upload-artifact@v4
+        with:
+          name: web-build
+          path: build/web
+          
+      - name: Move APK and AAB to Root
+        run: |
+           mv build/app/outputs/flutter-apk/app-release.apk .
+           zip -r web-build.zip build/web
+           
+      # Create GitHub Release and Upload Artifacts
+      - name: Create Release and Upload Assets
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.0.${{ github.run_number }}
+          name: Release v1.0.${{ github.run_number }}
+          body: "Automated release for build #${{ github.run_number }}."
+          draft: false
+          prerelease: false
+          files: |
+            app-release.apk
+            web-build.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}

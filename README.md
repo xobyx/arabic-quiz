@@ -2,7 +2,6 @@
 
 ## Overview
 This is a visually attractive quiz game with Arabic questions and three choices per question. The app features:
-- Beautiful UI with gradient backgrounds
 - Arabic text support
 - Multiple-choice questions with immediate feedback
 - Scoring system
