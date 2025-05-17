@@ -1,5 +1,5 @@
 # Arabic Quiz Game - README
-
+[![Flutter Build](https://github.com/xobyx/arabic-quiz/actions/workflows/main.yml/badge.svg)](https://github.com/xobyx/arabic-quiz/actions/workflows/main.yml)
 ## Overview
 This is a visually attractive quiz game with Arabic questions and three choices per question. The app features:
 - Arabic text support
